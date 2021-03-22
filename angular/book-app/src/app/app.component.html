@@ -1,0 +1,33 @@
+<div class="container">
+  <!-- Note menu -->
+  <div class="row" style="margin-top:12px;">
+    <div class="col-md-6">
+      <input type="text"
+             class="form-control"
+             style="width: 100%;"
+             placeholder="Search title..."
+             [(ngModel)]="searchText.title">
+      <input type="text"
+             class="form-control"
+             style="width: 100%;"
+             placeholder="Search ISBN..."
+             [(ngModel)]="searchText.isbn">
+    </div>
+    <div class="col-md-3 search">
+      <button type="button" (click)="searchBook()"
+              class="btn btn-info"><i class="fa fa-plus"></i> Search Book
+      </button>
+      <button type="button" (click)="getAllBooks()"
+              class="btn btn-warning"><i class="fa fa-plus"></i> Cancell
+      </button>
+    </div>
+    <div class="col-md-3">
+      <button type="button" (click)="openModalNewBook()"
+              class="btn btn-info"><i class="fa fa-plus"></i> New Book
+      </button>
+    </div>
+  </div>
+  <div style="margin-top:12px;">
+    <app-list-books [books]="books"></app-list-books>
+  </div>
+</div>

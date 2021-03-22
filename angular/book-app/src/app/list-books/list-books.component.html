@@ -1,0 +1,16 @@
+<table class="table table-striped table-hover">
+  <tr>
+    <td>Id</td>
+    <td>Title</td>
+    <td>ISBN</td>
+    <td>Edit</td>
+  </tr>
+  <tbody>
+  <tr *ngFor="let el of books">
+    <th scope="row">{{el.id}}</th>
+    <td>{{el.title}}</td>
+    <td>{{el.isbn}}</td>
+    <td><button class="btn-outline-warning btn"(click)="openModalEditBook(el)">Edit</button></td>
+  </tr>
+  </tbody>
+</table>
