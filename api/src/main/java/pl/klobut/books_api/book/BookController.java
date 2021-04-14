@@ -1,12 +1,12 @@
-package pl.klobut.books_api;
+package pl.klobut.books_api.book;
 
 import javassist.NotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.klobut.books_api.entity.BookEntity;
+import pl.klobut.books_api.Mapper;
 import pl.klobut.books_api.models.BookDTO;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
 
@@ -15,11 +15,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books")
-public class BookController {
-    @Autowired
+@RequiredArgsConstructor
+class BookController {
     private BookService bookService;
-
-    @Autowired
     private Mapper mapper;
 
     @PostMapping()
@@ -58,7 +56,7 @@ public class BookController {
                 .orElseThrow(() -> new NotFoundException("Book not found for this id :: " + id));
 
         bookEntity.setTitle(bookDTO.getTitle());
-        bookEntity.setISBN(bookDTO.getISBN());
+        bookEntity.setISBN(bookDTO.getIsbn());
         try {
             return mapper.convertToDTO(bookService.addBook(bookEntity));
         } catch (DataIntegrityViolationException e) {

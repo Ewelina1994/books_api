@@ -11,7 +11,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import pl.klobut.books_api.entity.BookEntity;
+import pl.klobut.books_api.book.BookEntity;
+import pl.klobut.books_api.book.BookService;
 import pl.klobut.books_api.models.BookDTO;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
 
@@ -96,7 +97,7 @@ class BookControllerTest {
         Assertions.assertEquals(1, bookDTOS.length);
 
         Assertions.assertEquals("Harry Potter cz 3", bookDTOS[0].getTitle());
-        Assertions.assertEquals("54354try", bookDTOS[0].getISBN());
+        Assertions.assertEquals("54354try", bookDTOS[0].getIsbn());
 
     }
 }

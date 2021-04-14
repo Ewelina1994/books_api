@@ -1,16 +1,16 @@
-package pl.klobut.books_api;
+package pl.klobut.books_api.book;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.klobut.books_api.entity.BookEntity;
+import org.springframework.transaction.annotation.Transactional;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BookService {
-    @Autowired
+@RequiredArgsConstructor
+class BookService {
     private BookRepository bookRepository;
 
     public BookEntity addBook(BookEntity book) {
@@ -21,14 +21,16 @@ public class BookService {
         return bookRepository.findAllByOrderByTitleAsc();
     }
 
+    @Transactional(readOnly=true)
     public List<BookEntity> findHospitalBySearchQuery(BookSearchQueryDTO bookSearchQueryDTO) {
         List<BookEntity> bookEntitiesBySearch = null;
         if ((!bookSearchQueryDTO.getTitle().isEmpty() && bookSearchQueryDTO.getTitle() != null) && (bookSearchQueryDTO.getIsbn() == null || bookSearchQueryDTO.getIsbn().isEmpty())) {
-            bookEntitiesBySearch = bookRepository.findBookEntitiesBySearchTitle(bookSearchQueryDTO.getTitle());
+            bookEntitiesBySearch = bookRepository.findBookEntitiesBySearchString(bookSearchQueryDTO.getTitle());
         } else if ((!bookSearchQueryDTO.getIsbn().isEmpty() && bookSearchQueryDTO.getIsbn() != null) && (bookSearchQueryDTO.getTitle() == null || bookSearchQueryDTO.getTitle().isEmpty())) {
-            bookEntitiesBySearch = bookRepository.findBookEntitiesBySearchIsbn(bookSearchQueryDTO.getIsbn());
+            bookEntitiesBySearch = bookRepository.findBookEntitiesBySearchString(bookSearchQueryDTO.getIsbn());
         } else {
-            bookEntitiesBySearch = bookRepository.findBookEntitiesBySearchTitleAndIsbn(bookSearchQueryDTO.getTitle(), bookSearchQueryDTO.getIsbn());
+            String searchString = bookSearchQueryDTO.getTitle() + bookSearchQueryDTO.getIsbn();
+            bookEntitiesBySearch = bookRepository.findBookEntitiesBySearchString(searchString);
         }
         return bookEntitiesBySearch;
     }
