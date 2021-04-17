@@ -1,37 +1,38 @@
 package pl.klobut.books_api.mappers;
 
+import org.springframework.stereotype.Component;
 import pl.klobut.books_api.domain.UserEntity;
 import pl.klobut.books_api.models.UserDTO;
+import org.modelmapper.ModelMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class UserMapper implements EntityMapper<UserDTO, UserEntity> {
+
+    ModelMapper modelMapper;
     @Override
     public UserEntity toEntity(UserDTO userDTO) {
-        UserEntity.builder().login(userDTO.getLogin())
-                            .password(userDTO.getPassword())
-                            .firstName(userDTO.getFirstName())
-                            .lastName(userDTO.getLastName())
-                            .phone(userDTO.getPhone())
-                            .email(userDTO.getEmail())
-                            .address(userDTO.getAddress())
-                            .userGroups(userDTO.getUserGroups())
-                .build();
-        return null;
+        UserEntity userEntity = modelMapper.map(userDTO, UserEntity.class);
+
+        return userEntity;
     }
 
     @Override
     public UserDTO toDto(UserEntity userEntity) {
-        return null;
+        return modelMapper.map(userEntity, UserDTO.class);
     }
 
     @Override
     public List<UserEntity> toEntityList(List<UserDTO> userDTOS) {
-        return null;
+        List<UserEntity> userEntities= new ArrayList<>();
+        return modelMapper.map(userDTOS, userEntities.getClass());
     }
 
     @Override
     public List<UserDTO> toDtoList(List<UserEntity> userEntities) {
-        return null;
+        List<UserDTO> userDTOS= new ArrayList<>();
+        return modelMapper.map(userEntities, userDTOS.getClass());
     }
 }
