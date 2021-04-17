@@ -2,7 +2,7 @@ package pl.klobut.books_api;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pl.klobut.books_api.book.BookEntity;
+import pl.klobut.books_api.domain.BookEntity;
 import pl.klobut.books_api.models.BookDTO;
 
 import static org.junit.jupiter.api.Assertions.*;

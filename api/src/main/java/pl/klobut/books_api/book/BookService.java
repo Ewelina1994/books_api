@@ -3,6 +3,7 @@ package pl.klobut.books_api.book;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.klobut.books_api.domain.BookEntity;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+public
 class BookService {
     private BookRepository bookRepository;
 

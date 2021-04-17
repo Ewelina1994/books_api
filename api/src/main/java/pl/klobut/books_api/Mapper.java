@@ -3,7 +3,7 @@ package pl.klobut.books_api;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.klobut.books_api.book.BookEntity;
+import pl.klobut.books_api.domain.BookEntity;
 import pl.klobut.books_api.models.BookDTO;
 
 import java.util.ArrayList;

@@ -1,19 +1,21 @@
-package pl.klobut.books_api.hire;
+package pl.klobut.books_api.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import pl.klobut.books_api.book.BookEntity;
-import pl.klobut.books_api.users.UsersEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class HireEntity {
+@Table(name = "hire")
+@Getter
+@Setter
+public class HireEntity extends BaseEntityWithId {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date date_hire_start;
     private Date date_deadline_to_return;

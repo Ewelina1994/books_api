@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import pl.klobut.books_api.book.BookEntity;
+import pl.klobut.books_api.domain.BookEntity;
 
 import java.util.List;
 
