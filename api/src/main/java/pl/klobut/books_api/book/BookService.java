@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.klobut.books_api.domain.BookEntity;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
+import pl.klobut.books_api.repository.BookRepository;
 
 import java.util.List;
 import java.util.Optional;

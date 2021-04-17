@@ -1,13 +1,17 @@
-package pl.klobut.books_api.users;
+package pl.klobut.books_api.domain;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "address")
 @RequiredArgsConstructor
-public class AddressEntity {
+@Getter
+@Setter
+public class AddressEntity extends BaseEntityWithId {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

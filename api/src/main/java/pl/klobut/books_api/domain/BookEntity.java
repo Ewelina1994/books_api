@@ -1,12 +1,15 @@
 package pl.klobut.books_api.domain;
 
-import lombok.*;
-import pl.klobut.books_api.domain.AuthorEntity;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -14,7 +17,7 @@ import java.util.*;
 @EqualsAndHashCode
 @RequiredArgsConstructor
 @Table(name = "books")
-public class BookEntity extends BaseEntityWithId{
+public class BookEntity extends BaseEntityWithId {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,14 +26,11 @@ public class BookEntity extends BaseEntityWithId{
     private String title;
     @Column(unique = true)
     private String ISBN;
-//    @ManyToMany(fetch = FetchType.LAZY,
-//            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-//            mappedBy = "books")
-//    private Set<AuthorEntity> authors= new HashSet<>();
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "books")
-    private List<AuthorEntity> authors= new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "books_authors_relation", joinColumns = {@JoinColumn(name = "book_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "author_id", referencedColumnName = "id")})
+    @Column(name = "authors")
+    private Set<AuthorEntity> authors = new HashSet<>();
 
 
 }

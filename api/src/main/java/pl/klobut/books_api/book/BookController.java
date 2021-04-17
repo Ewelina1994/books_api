@@ -27,7 +27,7 @@ class BookController {
         BookEntity bookEntity = mapper.convertToEntity(bookDTO);
 
         try {
-            return new ResponseEntity<>(mapper.convertToDTO(bookService.addBook(bookEntity)), HttpStatus.CREATED);
+           return new ResponseEntity<>(mapper.convertToDTO(bookService.addBook(bookEntity)), HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
             System.out.println(e);
         }

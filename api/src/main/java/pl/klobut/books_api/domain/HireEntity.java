@@ -26,7 +26,7 @@ public class HireEntity extends BaseEntityWithId {
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private UsersEntity user;
+    private UserEntity user;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "book_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)

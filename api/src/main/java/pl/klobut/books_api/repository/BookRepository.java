@@ -1,15 +1,15 @@
-package pl.klobut.books_api.book;
+package pl.klobut.books_api.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pl.klobut.books_api.domain.BookEntity;
+import pl.klobut.books_api.repository.base.RepositoryWithLongId;
 
 import java.util.List;
 
 @Repository
-public interface BookRepository extends JpaRepository<BookEntity, Long> {
+public interface BookRepository extends RepositoryWithLongId<BookEntity> {
 //    @Query(value = "SELECT * FROM BOOK_ENTITY WHERE title LIKE %:title%", nativeQuery = true)
 //    List<BookEntity> findBookEntitiesBySearchTitle(@Param("title") String title);
 

@@ -23,16 +23,4 @@ public class AuthorEntity extends BaseEntityWithId{
     @NotNull
     @Size(max = 50)
     private String lastName;
-    //    @ManyToMany(fetch = FetchType.LAZY,
-//            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-//            mappedBy = "authors")
-//    @JoinTable(name = "book_author",
-//            joinColumns = { @JoinColumn(name = "author_id") },
-//            inverseJoinColumns = { @JoinColumn(name = "book_id") })
-//    @JoinTable(name = "book_author_relation", joinColumns = {@JoinColumn(name = "author_id", referencedColumnName = "id")}, inverseJoinColumns = {
-//            @JoinColumn(name = "book_id", referencedColumnName = "id")})
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false, name = "book_id")
-    private BookEntity books;
-
 }
