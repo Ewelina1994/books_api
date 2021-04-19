@@ -1,7 +1,6 @@
 package pl.klobut.books_api.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.OnDelete;
@@ -14,7 +13,6 @@ import java.util.Set;
 @Table(name = "users")
 @RequiredArgsConstructor
 @Getter
-@Builder
 public class UserEntity extends BaseEntityWithId{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
