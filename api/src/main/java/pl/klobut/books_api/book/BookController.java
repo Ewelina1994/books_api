@@ -10,6 +10,7 @@ import pl.klobut.books_api.Mapper;
 import pl.klobut.books_api.domain.BookEntity;
 import pl.klobut.books_api.models.BookDTO;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
+import pl.klobut.books_api.services.impl.book.BookServiceImpl;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
 @RequestMapping("/books")
 @RequiredArgsConstructor
 class BookController {
-    private BookService bookService;
+    private BookServiceImpl bookService;
     private Mapper mapper;
 
     @PostMapping()

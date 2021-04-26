@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.joda.time.LocalDateTime;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "hire")
@@ -17,10 +17,10 @@ public class HireEntity extends BaseEntityWithId {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date date_hire_start;
-    private Date date_deadline_to_return;
-    private Date date_when_given_back;
-    private Long how_many_extended_the_deadline;
+    private LocalDateTime date_hire_start;
+    private LocalDateTime date_deadline_to_return;
+    private LocalDateTime date_when_given_back;
+    private int how_many_extended_the_deadline;
     private boolean isReturn;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)

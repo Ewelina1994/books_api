@@ -11,7 +11,8 @@ import java.util.List;
 @Component
 public class UserMapper implements EntityMapper<UserDTO, UserEntity> {
 
-    ModelMapper modelMapper;
+    private ModelMapper modelMapper;
+
     @Override
     public UserEntity toEntity(UserDTO userDTO) {
         UserEntity userEntity = modelMapper.map(userDTO, UserEntity.class);

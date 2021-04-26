@@ -12,9 +12,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import pl.klobut.books_api.domain.BookEntity;
-import pl.klobut.books_api.book.BookService;
 import pl.klobut.books_api.models.BookDTO;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
+import pl.klobut.books_api.services.impl.book.BookServiceImpl;
 
 import java.util.Optional;
 
@@ -28,7 +28,7 @@ class BookControllerTest {
     @Autowired
     ObjectMapper objectMapper;
     @Autowired
-    BookService bookService;
+    BookServiceImpl bookService;
 
     @Test
     public void shouldReturnAllBooksSortedDecs() throws Exception {
