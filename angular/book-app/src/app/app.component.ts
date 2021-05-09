@@ -57,7 +57,8 @@ export class AppComponent {
     modalRef.content.event.subscribe(res => {
       if (!res.isNotNullOrUndefined) {
         this.newBook.title = res.data.title;
-        this.newBook.isbn = res.data.title;
+        this.newBook.isbn = res.data.isbn;
+        this.restService.addNewBook(this.newBook);
         this.refreshPage();
       }
     });
