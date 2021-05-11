@@ -1,8 +1,6 @@
 package pl.klobut.books_api.domain;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,9 +8,9 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "authors")
-@RequiredArgsConstructor
 @Getter
-@Setter
+@AllArgsConstructor
+@Builder
 public class AuthorEntity extends BaseEntityWithId{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

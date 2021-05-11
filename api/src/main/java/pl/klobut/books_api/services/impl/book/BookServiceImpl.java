@@ -1,6 +1,5 @@
 package pl.klobut.books_api.services.impl.book;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.klobut.books_api.domain.BookEntity;
@@ -12,10 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public
 class BookServiceImpl implements BookService {
     private BookRepository bookRepository;
+
+    public BookServiceImpl(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     public BookEntity addBook(BookEntity book) {
         return bookRepository.save(book);
@@ -27,7 +29,7 @@ class BookServiceImpl implements BookService {
 
     @Transactional(readOnly=true)
     public List<BookEntity> findHospitalBySearchQuery(BookSearchQueryDTO bookSearchQueryDTO) {
-        List<BookEntity> bookEntitiesBySearch = null;
+        List<BookEntity> bookEntitiesBySearch;
         if ((!bookSearchQueryDTO.getTitle().isEmpty() && bookSearchQueryDTO.getTitle() != null) && (bookSearchQueryDTO.getIsbn() == null || bookSearchQueryDTO.getIsbn().isEmpty())) {
             bookEntitiesBySearch = bookRepository.findBookEntitiesBySearchString(bookSearchQueryDTO.getTitle());
         } else if ((!bookSearchQueryDTO.getIsbn().isEmpty() && bookSearchQueryDTO.getIsbn() != null) && (bookSearchQueryDTO.getTitle() == null || bookSearchQueryDTO.getTitle().isEmpty())) {

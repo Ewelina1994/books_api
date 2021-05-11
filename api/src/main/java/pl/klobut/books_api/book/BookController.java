@@ -1,7 +1,6 @@
 package pl.klobut.books_api.book;
 
 import javassist.NotFoundException;
-import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +16,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books")
-@RequiredArgsConstructor
 class BookController {
     private BookServiceImpl bookService;
     private Mapper mapper;
+
+    public BookController(BookServiceImpl bookService, Mapper mapper) {
+        this.bookService = bookService;
+        this.mapper = mapper;
+    }
 
     @PostMapping()
     @CrossOrigin(origins = "http://localhost:4200")
@@ -30,7 +33,7 @@ class BookController {
         try {
            return new ResponseEntity<>(mapper.convertToDTO(bookService.addBook(bookEntity)), HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }
@@ -62,7 +65,7 @@ class BookController {
         try {
             return mapper.convertToDTO(bookService.addBook(bookEntity));
         } catch (DataIntegrityViolationException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }

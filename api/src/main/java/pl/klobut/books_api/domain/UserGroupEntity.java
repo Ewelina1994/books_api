@@ -1,14 +1,14 @@
 package pl.klobut.books_api.domain;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
+@Builder
 @Table(name = "user_group")
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class UserGroupEntity extends BaseEntityWithId {

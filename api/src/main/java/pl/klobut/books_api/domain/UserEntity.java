@@ -1,8 +1,9 @@
 package pl.klobut.books_api.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -10,8 +11,9 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Builder
 @Table(name = "users")
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 public class UserEntity extends BaseEntityWithId{
     @Id

@@ -44,8 +44,9 @@ class BookControllerTest {
 
     @Test
     public void testUpdateBook() throws Exception {
-        BookEntity updateBook = new BookEntity();
-        updateBook.setTitle("change");
+        BookEntity updateBook = BookEntity.builder()
+                .title("change")
+                .ISBN("jis8989").build();
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put("/books/1")
                 .contentType("application/json")
@@ -58,7 +59,7 @@ class BookControllerTest {
 
         Optional<BookEntity> findMessage = bookService.findById(idBook);
 
-        assertThat(findMessage.get().getTitle()).isEqualTo(updateBook.getTitle());
+        assertThat(findMessage.orElse(null).getTitle()).isEqualTo(updateBook.getTitle());
     }
 
     @Test
