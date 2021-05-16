@@ -9,18 +9,18 @@ import pl.klobut.books_api.Mapper;
 import pl.klobut.books_api.domain.BookEntity;
 import pl.klobut.books_api.models.BookDTO;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
-import pl.klobut.books_api.services.impl.book.BookServiceImpl;
+import pl.klobut.books_api.services.impl.book.BookAllService;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/books")
-class BookController {
-    private BookServiceImpl bookService;
+class AllBookListController {
+    private BookAllService bookService;
     private Mapper mapper;
 
-    public BookController(BookServiceImpl bookService, Mapper mapper) {
+    public AllBookListController(BookAllService bookService, Mapper mapper) {
         this.bookService = bookService;
         this.mapper = mapper;
     }
@@ -41,14 +41,14 @@ class BookController {
     @GetMapping()
     @CrossOrigin(origins = "http://localhost:4200")
     public List<BookDTO> getAllBooks() {
-        return mapper.convertToDTOList(bookService.getAllBooks());
+        return bookService.getAllBooks();
     }
 
     @PostMapping("/search")
     @ResponseBody
     @CrossOrigin(origins = "http://localhost:4200")
     public List<BookDTO> findBooks(@RequestBody BookSearchQueryDTO bookSearchQueryDTO) {
-        List<BookDTO> bookSearch = mapper.convertToDTOList(bookService.findHospitalBySearchQuery(bookSearchQueryDTO));
+        List<BookDTO> bookSearch = bookService.findBookBySearch(bookSearchQueryDTO);
 
         return bookSearch;
     }
@@ -56,7 +56,6 @@ class BookController {
     @PutMapping("/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
     public BookDTO updateBook(@Valid @RequestBody BookDTO bookDTO, @PathVariable long id) throws NotFoundException {
-
         BookEntity bookEntity = bookService.findById(id)
                 .orElseThrow(() -> new NotFoundException("Book not found for this id :: " + id));
 

@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import pl.klobut.books_api.domain.BookEntity;
 import pl.klobut.books_api.models.BookDTO;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
-import pl.klobut.books_api.services.impl.book.BookServiceImpl;
 
 import java.util.Optional;
 
@@ -22,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class BookControllerTest {
+class AllBookListControllerTest {
     @Autowired
     MockMvc mockMvc;
     @Autowired
