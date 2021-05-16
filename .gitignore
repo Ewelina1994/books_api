@@ -10,4 +10,6 @@ angular/.idea/workspace.xml
 api/.idea/
 api/books_api.iml
 api/target/
+angular/book-app/tsconfig.spec.json
+
 
