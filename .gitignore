@@ -5,3 +5,9 @@ angular/book-app/.idea/misc.xml
 angular/book-app/.idea/modules.xml
 angular/book-app/.idea/vcs.xml
 angular/book-app/node_modules/
+angular/.idea/angular.iml
+angular/.idea/workspace.xml
+api/.idea/
+api/books_api.iml
+api/target/
+
