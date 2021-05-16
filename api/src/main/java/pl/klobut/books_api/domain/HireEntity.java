@@ -1,7 +1,9 @@
 package pl.klobut.books_api.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -12,6 +14,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "hire")
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Setter
 public class HireEntity extends BaseEntityWithId {
     @Id

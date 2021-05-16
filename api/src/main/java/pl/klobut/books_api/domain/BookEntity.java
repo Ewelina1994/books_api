@@ -12,6 +12,7 @@ import java.util.Set;
 @Getter
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Setter
 @Table(name = "books")
@@ -30,6 +31,9 @@ public class BookEntity extends BaseEntityWithId {
             @JoinColumn(name = "author_id", referencedColumnName = "id")})
     @Column(name = "authors")
     private Set<AuthorEntity> authors;
+
+    @Enumerated(EnumType.STRING)
+    private Category category;
 
 
 }

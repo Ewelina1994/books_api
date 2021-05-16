@@ -1,0 +1,27 @@
+package pl.klobut.books_api.domain;
+
+public enum Category {
+    ACTION_AND_ADVENTURE,
+    CLASSICS,
+    COMIC_BOOK,
+    DETECTIVE,
+    FANTASY,
+    HISTORICAL,
+    FICTION,
+    HORROR,
+    LITERARY_FICTION,
+    ROMANCE,
+    SCIENCE_FICTION,
+    SHORT_STORIES,
+    THRILLERS,
+    WOMENS_FICTION,
+    BIOGRAPHIES_AND_AUTOBIOGRAPHIES,
+    COOKBOOKS,
+    ESSAYS,
+    HISTORY,
+    MEMOIR,
+    POETRY,
+    SELF_HELP,
+    TRUE_CRIME,
+
+    }

@@ -1,11 +1,15 @@
 package pl.klobut.books_api.models;
 
 import lombok.*;
+import pl.klobut.books_api.domain.Category;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Objects;
+import java.util.List;
+
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -18,6 +22,9 @@ public class BookDTO {
     private String title;
     @Column(unique = true)
     private String isbn;
+    private List<AuthorDTO> authorDTOList;
+    @Enumerated(value = EnumType.STRING)
+    private Category category;
 
 
 }

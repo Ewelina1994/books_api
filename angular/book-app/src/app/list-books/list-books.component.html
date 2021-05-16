@@ -3,6 +3,8 @@
     <td>Id</td>
     <td>Title</td>
     <td>ISBN</td>
+    <td>Category</td>
+    <td>Authors</td>
     <td>Edit</td>
   </tr>
   <tbody>
@@ -10,6 +12,8 @@
     <th scope="row">{{el.id}}</th>
     <td>{{el.title}}</td>
     <td>{{el.isbn}}</td>
+    <td>{{el.category}}</td>
+    <td>{{el.list_authors}}</td>
     <td><button class="btn-outline-warning btn"(click)="openModalEditBook(el)">Edit</button></td>
   </tr>
   </tbody>

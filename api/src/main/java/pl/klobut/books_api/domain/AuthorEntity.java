@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 @Table(name = "authors")
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class AuthorEntity extends BaseEntityWithId{
     @Id

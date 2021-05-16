@@ -56,30 +56,37 @@ public class Start implements ApplicationRunner {
 
         authorRepository.saveAll(Arrays.asList(authorRowling, authorMeyer, authorBrontë, authorSienkiewicz));
 
+
         BookEntity harryPotterCz2Book = BookEntity.builder()
                 .title("Harry Potter cz 2")
                 .ISBN("456fds5")
                 .authors(Collections.singleton(authorRowling))
+                .category(Category.FICTION)
                 .build();
         BookEntity harryPotterCz3Book = BookEntity.builder()
                 .title("Harry Potter cz 3")
                 .ISBN("5656sdads")
                 .authors(Collections.singleton(authorRowling))
+                .category(Category.FANTASY)
                 .build();
         BookEntity zmierzchBook = BookEntity.builder()
                 .title("Zmierzch")
                 .ISBN("348239405656")
                 .authors(Collections.singleton(authorMeyer))
+                .category(Category.FANTASY)
                 .build();
         BookEntity wichrowehBook = BookEntity.builder()
                 .title("Wichrowe wzgórza")
                 .ISBN("fj834278g")
                 .authors(Collections.singleton(authorBrontë))
+                .category(Category.ROMANCE)
                 .build();
+
         BookEntity wPustyniIWPuszczyBook = BookEntity.builder()
                 .title("W pustyni i w puszczy")
                 .ISBN("656ebr8")
                 .authors(Collections.singleton(authorSienkiewicz))
+                .category(Category.CLASSICS)
                 .build();
 
         bookRepository.saveAll(Arrays.asList(harryPotterCz2Book, harryPotterCz3Book, zmierzchBook, wichrowehBook, wPustyniIWPuszczyBook));

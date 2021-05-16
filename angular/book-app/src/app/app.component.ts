@@ -20,7 +20,9 @@ export class AppComponent {
   newBook: Book = {
     title: null,
     id: null,
-    isbn: null
+    isbn: null,
+    category: null,
+    list_authors: null
   };
 
   constructor(public modalService: BsModalService, public restService: RestServiceService) {
@@ -58,6 +60,8 @@ export class AppComponent {
       if (!res.isNotNullOrUndefined) {
         this.newBook.title = res.data.title;
         this.newBook.isbn = res.data.isbn;
+        this.newBook.category=res.data.category;
+        this.newBook.list_authors=res.data.list_authors;
         this.restService.addNewBook(this.newBook);
         this.refreshPage();
       }
