@@ -5,7 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.klobut.books_api.Mapper;
+import pl.klobut.books_api.MapperBook;
 import pl.klobut.books_api.domain.BookEntity;
 import pl.klobut.books_api.models.BookDTO;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
@@ -18,20 +18,20 @@ import java.util.List;
 @RequestMapping("/books")
 class AllBookListController {
     private BookAllService bookService;
-    private Mapper mapper;
+    private MapperBook mapperBook;
 
-    public AllBookListController(BookAllService bookService, Mapper mapper) {
+    public AllBookListController(BookAllService bookService, MapperBook mapperBook) {
         this.bookService = bookService;
-        this.mapper = mapper;
+        this.mapperBook = mapperBook;
     }
 
     @PostMapping()
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<BookDTO> addNewBook(@RequestBody @Valid BookDTO bookDTO) {
-        BookEntity bookEntity = mapper.convertToEntity(bookDTO);
+        BookEntity bookEntity = mapperBook.convertToEntity(bookDTO);
 
         try {
-           return new ResponseEntity<>(mapper.convertToDTO(bookService.addBook(bookEntity)), HttpStatus.CREATED);
+           return new ResponseEntity<>(mapperBook.convertToDTO(bookService.addBook(bookEntity)), HttpStatus.CREATED);
         } catch (DataIntegrityViolationException e) {
             e.printStackTrace();
         }
@@ -62,7 +62,7 @@ class AllBookListController {
         bookEntity.setTitle(bookDTO.getTitle());
         bookEntity.setISBN(bookDTO.getIsbn());
         try {
-            return mapper.convertToDTO(bookService.addBook(bookEntity));
+            return mapperBook.convertToDTO(bookService.addBook(bookEntity));
         } catch (DataIntegrityViolationException e) {
             e.printStackTrace();
         }

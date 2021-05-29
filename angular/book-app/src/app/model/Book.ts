@@ -1,9 +1,9 @@
-import {Author} from "./Author";
+import {Author} from './Author';
 
-export interface Book {
+export class Book {
   id: number;
   title: string;
   isbn: string;
   category: string;
-  list_authors: Author[]
+  authors: Author[]
 }

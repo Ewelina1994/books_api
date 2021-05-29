@@ -15,6 +15,7 @@ import java.util.List;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class BookDTO {
     private Long id;
     @NotNull
@@ -22,7 +23,7 @@ public class BookDTO {
     private String title;
     @Column(unique = true)
     private String isbn;
-    private List<AuthorDTO> authorDTOList;
+    private List<AuthorDTO> authors;
     @Enumerated(value = EnumType.STRING)
     private Category category;
 

@@ -13,7 +13,7 @@
     <td>{{el.title}}</td>
     <td>{{el.isbn}}</td>
     <td>{{el.category}}</td>
-    <td>{{el.list_authors}}</td>
+      <td><p *ngFor="let au of el.authors">{{au.firstName}}</p></td>
     <td><button class="btn-outline-warning btn"(click)="openModalEditBook(el)">Edit</button></td>
   </tr>
   </tbody>

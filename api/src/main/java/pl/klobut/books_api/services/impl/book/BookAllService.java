@@ -2,7 +2,7 @@ package pl.klobut.books_api.services.impl.book;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.klobut.books_api.Mapper;
+import pl.klobut.books_api.MapperBook;
 import pl.klobut.books_api.domain.BookEntity;
 import pl.klobut.books_api.models.BookDTO;
 import pl.klobut.books_api.models.BookSearchQueryDTO;
@@ -15,12 +15,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class BookAllService implements BookService {
-    private final Mapper mapper;
+    private final MapperBook mapperBook;
 
     private final BookRepository bookRepository;
 
-    public BookAllService(Mapper mapper, BookRepository bookRepository) {
-        this.mapper = mapper;
+    public BookAllService(MapperBook mapperBook, BookRepository bookRepository) {
+        this.mapperBook = mapperBook;
         this.bookRepository = bookRepository;
     }
     @Override
@@ -30,8 +30,9 @@ public class BookAllService implements BookService {
 
     @Override
     public List<BookDTO> getAllBooks() {
-        List<BookDTO> collect = bookRepository.findAllByOrderByTitleAsc().stream().map(this.mapper::convertToDTO)
+        List<BookDTO> collect = bookRepository.findAllByOrderByTitleAsc().stream().map(this.mapperBook::convertToDTO)
                 .collect(Collectors.toList());
+
         return collect;
     }
 
@@ -47,7 +48,7 @@ public class BookAllService implements BookService {
             String searchString = bookSearchQueryDTO.getTitle() + bookSearchQueryDTO.getIsbn();
             bookEntitiesBySearch = bookRepository.findBookEntitiesBySearchString(searchString);
         }
-        return bookEntitiesBySearch.stream().map(mapper::convertToDTO).collect(Collectors.toList());
+        return bookEntitiesBySearch.stream().map(mapperBook::convertToDTO).collect(Collectors.toList());
     }
 
     @Override

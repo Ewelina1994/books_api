@@ -6,11 +6,8 @@ import org.springframework.stereotype.Component;
 import pl.klobut.books_api.domain.BookEntity;
 import pl.klobut.books_api.models.BookDTO;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
-public class Mapper {
+public class MapperBook {
     @Autowired
     private ModelMapper modelMapper;
 
@@ -22,21 +19,5 @@ public class Mapper {
     public BookEntity convertToEntity(BookDTO bookDTOk){
         BookEntity bookEntity = modelMapper.map(bookDTOk, BookEntity.class);
         return bookEntity;
-    }
-
-    public List<BookDTO> convertToDTOList(List<BookEntity> bookEntityList){
-        List<BookDTO> bookDTOList= new ArrayList<>();
-        for(BookEntity b: bookEntityList){
-            bookDTOList.add(convertToDTO(b));
-        }
-        return bookDTOList;
-    }
-
-    public List<BookEntity> convertToEntityList(List<BookDTO> bookDTO){
-        List<BookEntity> bookEntityList= new ArrayList<>();
-        for(BookDTO b: bookDTO){
-            bookEntityList.add(convertToEntity(b));
-        }
-        return bookEntityList;
     }
 }

@@ -22,7 +22,7 @@ export class AppComponent {
     id: null,
     isbn: null,
     category: null,
-    list_authors: null
+    authors: null
   };
 
   constructor(public modalService: BsModalService, public restService: RestServiceService) {
@@ -33,9 +33,13 @@ export class AppComponent {
     this.restService.getAllBooks().subscribe(
       res => {
         this.books = res;
+        console.log(res);
+          console.log('bookss: ', this.books);
+
+
       },
       err => {
-        window.alert('Błąd podczas wyświetlanai listy książek');
+        window.alert('Błąd podczas wyświetlania listy książek');
       }
     );
   }
@@ -61,7 +65,8 @@ export class AppComponent {
         this.newBook.title = res.data.title;
         this.newBook.isbn = res.data.isbn;
         this.newBook.category=res.data.category;
-        this.newBook.list_authors=res.data.list_authors;
+        this.newBook.authors=res.data.authors;
+        console.log(this.newBook);
         this.restService.addNewBook(this.newBook);
         this.refreshPage();
       }

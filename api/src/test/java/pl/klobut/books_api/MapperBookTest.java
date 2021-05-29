@@ -7,12 +7,12 @@ import pl.klobut.books_api.models.BookDTO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MapperTest {
-    private Mapper mapper;
+class MapperBookTest {
+    private MapperBook mapperBook;
 
     @BeforeEach
     public void before() {
-        mapper = new Mapper();
+        mapperBook = new MapperBook();
     }
 
     @Test
@@ -21,7 +21,7 @@ class MapperTest {
                 .title("Harry Potter")
                 .ISBN("jdk34928").build();
 
-        BookDTO bookDTO = mapper.convertToDTO(bookEntity);
+        BookDTO bookDTO = mapperBook.convertToDTO(bookEntity);
         assertEquals(bookDTO.getTitle(), bookEntity.getTitle());
     }
 
@@ -30,7 +30,7 @@ class MapperTest {
         BookDTO bookDTO = new BookDTO();
         bookDTO.setTitle("Wife's king");
 
-        BookEntity bookEntity = mapper.convertToEntity(bookDTO);
+        BookEntity bookEntity = mapperBook.convertToEntity(bookDTO);
         assertEquals(bookDTO.getTitle(), bookEntity.getTitle());
     }
 

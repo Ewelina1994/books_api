@@ -3,7 +3,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {Book} from '../model/Book';
 import {RestServiceService} from '../service/rest-service.service';
 import {NewBookModalComponent} from '../modal-window/new-book-modal/new-book-modal.component';
-import {Author} from "../model/Author";
+import {Author} from '../model/Author';
 
 @Component({
   selector: 'app-list-books',
@@ -18,7 +18,7 @@ export class ListBooksComponent implements OnInit {
     title: null,
     isbn: null,
     category: null,
-    list_authors: Author[]
+    authors: null
   }
   bsModalRef: BsModalRef;
   constructor(private restService: RestServiceService, private modalService: BsModalService) { }
@@ -33,7 +33,7 @@ export class ListBooksComponent implements OnInit {
           title: el.title,
           isbn: el.isbn,
           category: el.category,
-          list_author: el.list_authors
+          authors: el.authors
         }
       ]
     };
@@ -44,7 +44,7 @@ export class ListBooksComponent implements OnInit {
         this.editBook.title = res.data.title;
         this.editBook.isbn = res.data.title;
         this.editBook.category = res.data.category;
-        this.editBook.list_authors = res.data.list_author;
+        this.editBook.authors = res.data.authors;
         this.editBookMethod(this.editBook);
       }
     });
