@@ -1,6 +1,5 @@
 package pl.klobut.books_api.users;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.klobut.books_api.MapperUser;
 import pl.klobut.books_api.exceptions.WebAuthApiException;
@@ -27,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> addNewUser(@RequestBody UserDTO userDTO ) throws WebAuthApiException {
+    public UserDTO addNewUser(@RequestBody UserDTO userDTO ) throws WebAuthApiException {
         return mapperUser.convertToDTO(userService.createUser(userDTO, null));
     }
 }
